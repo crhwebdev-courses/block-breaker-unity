@@ -2,16 +2,21 @@
 
 public class Block : MonoBehaviour
 {
+    // config params
     [SerializeField] private AudioClip breakSound;
     [SerializeField] private GameObject blockSparklesVFX;
+    [SerializeField] private int maxHits = 2;
 
-    // cached reference
+    // cached references
     Level level;
-    GameSession gameStatus;
+    GameSession gameSession;
+
+    // state variables
+    [SerializeField] int timesHit; //TODO only serialized for debug purposes
 
     private void Start()
     {
-        gameStatus = FindObjectOfType<GameSession>();
+        gameSession = FindObjectOfType<GameSession>();
         CountBreakableBlocks();
 
     }
@@ -29,13 +34,22 @@ public class Block : MonoBehaviour
     {
         if (CompareTag("Breakable"))
         {
+            HandleHit();
+        }
+    }
+
+    private void HandleHit()
+    {
+        timesHit++;
+        if (timesHit >= maxHits)
+        {
             DestroyBlock();
         }
-        
     }
+
     private void DestroyBlock()
     {        
-        gameStatus.AddToScore();
+        gameSession.AddToScore();
         PlayBlockDestroySFX();
         Destroy(gameObject);
         level.BlockDestroyed();
