@@ -101,7 +101,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 10
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a82f69e7b2dbeab47a8ed0b7e88dfb78, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -138,11 +138,10 @@ MonoBehaviour:
   xPush: 2
   yPush: 15
   ballSounds:
-  - {fileID: 8300000, guid: aa18cf1a9d5f2b24796f54775c104b3d, type: 3}
+  - {fileID: 8300000, guid: 9adc79ad50fa243459add0dac2411ea7, type: 3}
   - {fileID: 8300000, guid: c629077fe07b8744d815f6c350bcc155, type: 3}
   - {fileID: 8300000, guid: ecae56e9176cddc4cbe3a926e1df736b, type: 3}
   - {fileID: 8300000, guid: c2d951c4142951d418f5ceefac12fb7f, type: 3}
-  - {fileID: 8300000, guid: 9adc79ad50fa243459add0dac2411ea7, type: 3}
 --- !u!82 &426433023
 AudioSource:
   m_ObjectHideFlags: 0

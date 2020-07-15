@@ -2,9 +2,10 @@
 
 public class Block : MonoBehaviour
 {
+    [SerializeField] private AudioClip breakSound;  
     private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(gameObject);
-        Debug.Log(collision.gameObject.name);
+    {       
+        AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
+        Destroy(gameObject);        
     }
 }
