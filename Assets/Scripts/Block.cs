@@ -6,9 +6,11 @@ public class Block : MonoBehaviour
 
     // cached reference
     Level level;
+    GameStatus gameStatus;
 
     private void Start()
     {
+        gameStatus = FindObjectOfType<GameStatus>();
         level = FindObjectOfType<Level>();
         level.CountBreakableBlocks();
     }
@@ -19,8 +21,9 @@ public class Block : MonoBehaviour
 
     private void DestroyBlock()
     {
-        AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
-        Destroy(gameObject);
+        gameStatus.AddToScore();
+        AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);        
+        Destroy(gameObject);        
         level.BlockDestroyed();
     }
 }
