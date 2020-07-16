@@ -12,23 +12,11 @@ public class LoseCollider : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // TODO - better way to tell if it is a ball
-        if(collision.gameObject.name == "Ball")
+    {                                                        
+        if (collision.TryGetComponent<Ball>(out Ball ball))
         {
             level.BallDestroyed();
-
-            Ball ball;
-
-            // TODO - way to remove this object from the game
-            collision.TryGetComponent<Ball>(out ball);
-
-            if (ball != null)
-            {
-                ball.DestroyBall();                
-            }
-        }
-        
-        
+            ball.DestroyBall();                
+        }                        
     }
 }
