@@ -2,7 +2,9 @@
 
 public class Level : MonoBehaviour
 {
+    [SerializeField] private string endScene = "Game Over";
     [SerializeField] private int breakableBlocks; // Serialized for debugging purposes
+    [SerializeField] private int balls; // Serialized for debugging purposes
 
     // cached references
     SceneLoader sceneLoader;
@@ -16,7 +18,7 @@ public class Level : MonoBehaviour
     {
         breakableBlocks++;
     }
-
+    
     public void BlockDestroyed()
     {
         breakableBlocks--;
@@ -25,5 +27,19 @@ public class Level : MonoBehaviour
             sceneLoader.LoadNextScene();
         }
     }
-   
+
+    public void CountBalls()
+    {
+        balls++;
+    }
+
+    public void BallDestroyed()
+    {
+        balls--;
+        if(balls <= 0)
+        {
+            sceneLoader.LoadNamedScene(endScene);
+        }
+    }
+
 }

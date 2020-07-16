@@ -17,15 +17,16 @@ public class Ball : MonoBehaviour
     Rigidbody2D myRigidbody2D;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {        
         paddleToBallVector = transform.position - paddle1.transform.position;
         myAudioSource = GetComponent<AudioSource>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
+        FindObjectOfType<Level>().CountBalls();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!hasStarted)
         {
@@ -49,6 +50,11 @@ public class Ball : MonoBehaviour
         // stick ball position to paddle position
         Vector2 paddlePos = new Vector2(paddle1.transform.position.x, paddle1.transform.position.y);
         transform.position = paddlePos + paddleToBallVector;
+    }
+
+    public void DestroyBall()
+    {
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
